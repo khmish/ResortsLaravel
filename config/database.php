@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-$DATABASE_URL=parse_url('HEROKU_POSTGRESQL_CYAN_URL');
+$DATABASE_URL=parse_url('postgres://vvxszmelbpugis:fb211166919c7edc7838c8929c114a39a62cc09f0f0d7612b3f813fd23acb745@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d7jt41tirq3796');
 return [
 
     /*
