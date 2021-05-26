@@ -19,6 +19,8 @@ class CreateRentTable extends Migration
             $table->dateTime('rentedDate')->nullable();
             $table->integer('state')->nullable();
             $table->string('AvailableTime_id')->index('fk_Rent_AvailableTime1_idx');
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

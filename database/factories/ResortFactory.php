@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Resort;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class ResortFactory extends Factory
 {
@@ -22,11 +23,11 @@ class ResortFactory extends Factory
     public function definition()
     {
         return [
+            'id'=>Str::uuid(),
             'name' => $this->faker->name,
             'description' => $this->faker->text,
-            'longitude' => null,
-            'latitude' => null,
-            'media' => null,
+            'updated_at' => now(),
+            'created_at' => now(),
         ];
     }
 }

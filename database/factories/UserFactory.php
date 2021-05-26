@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 class UserFactory extends Factory
 {
@@ -22,14 +23,18 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $roles=['','',''];
+        $roles=['Admin','Customer','Guest'];
+        $email=$this->faker->unique()->safeEmail;
+        $username=Str::of($email)->explode('@');
         return [
+            'id'=>Str::uuid(),
             'name' => $this->faker->name,
-            'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
+            'username' => $username[0],
+            'eamil' => $email,
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-            'role' => Str::random(10),
+            'role' => $roles[rand(0,2)],
+            'updated_at' => now(),
+            'created_at' => now(),
         ];
     }
 

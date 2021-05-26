@@ -33,8 +33,9 @@ class User extends Authenticatable
 
     use HasFactory, Notifiable,HasApiTokens,SoftDeletes;
 	protected $table = 'user';
-	public $incrementing = false;
-	// public $timestamps = false;
+	// public $incrementing = true;
+	public $timestamps = true;
+	
 
 	protected $hidden = [
 		'password'
@@ -42,6 +43,7 @@ class User extends Authenticatable
 
 	protected $fillable = [
 		'username',
+		'eamil',
 		'name',
 		'role',
 		'password'
