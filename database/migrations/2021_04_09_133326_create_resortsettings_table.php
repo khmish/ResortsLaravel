@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Query\Expression;
+
 class CreateResortsettingsTable extends Migration
 {
     /**
@@ -14,7 +14,7 @@ class CreateResortsettingsTable extends Migration
     public function up()
     {
         Schema::create('resortsettings', function (Blueprint $table) {
-            $table->string('id')->primary()->default(new Expression("uuid_generate_v4()"));
+            $table->string('id')->primary();
             $table->integer('cost')->nullable();
             $table->integer('costWeekend')->nullable();
             $table->integer('startTime')->nullable();

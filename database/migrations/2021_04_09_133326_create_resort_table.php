@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Query\Expression;
+
 class CreateResortTable extends Migration
 {
     /**
@@ -14,7 +14,7 @@ class CreateResortTable extends Migration
     public function up()
     {
         Schema::create('resort', function (Blueprint $table) {
-            $table->string('id')->primary()->default(new Expression("uuid_generate_v4()"));
+            $table->string('id')->primary();
             $table->string('name', 80)->nullable();
             $table->text('description')->nullable();
             $table->string('longitude', 45)->nullable();

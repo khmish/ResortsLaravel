@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Query\Expression;
+
 class CreateUserTable extends Migration
 {
     /**
@@ -14,7 +14,7 @@ class CreateUserTable extends Migration
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->string('id')->primary()->default(new Expression("uuid_generate_v4()"));
+            $table->string('id')->primary();
             $table->string('email', 80);
             $table->string('username', 80)->nullable();
             $table->string('name', 80);
