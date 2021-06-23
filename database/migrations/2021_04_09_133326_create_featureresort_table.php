@@ -20,6 +20,7 @@ class CreateFeatureresortTable extends Migration
             $table->text('description')->nullable();
             $table->longText('media')->nullable();
             $table->primary(['Feature_id', 'Resort_id']);
+            $table->softDeletes();
         });
     }
 
