@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
-$DATABASE_URL=parse_url('HEROKU_POSTGRESQL_CYAN_URL');
+// $DATABASE_URL=parse_url('HEROKU_POSTGRESQL_CYAN_URL');
 return [
 
     /*
@@ -66,11 +66,11 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL','postgres://vvxszmelbpugis:fb211166919c7edc7838c8929c114a39a62cc09f0f0d7612b3f813fd23acb745@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d7jt41tirq3796'),
-            'host' => /*$DATABASE_URL["host"],*/env('DB_HOST', 'ec2-107-22-245-82.compute-1.amazonaws.com'),
-            'port' => /*$DATABASE_URL["port"],*/env('DB_PORT', '5432'),
-            'database' => /*ltrim($DATABASE_URL["path"],'/'),*/env('DB_DATABASE', 'd7jt41tirq3796'),
-            'username' => /*$DATABASE_URL["user"],*/env('DB_USERNAME', 'vvxszmelbpugis'),
-            'password' => /*$DATABASE_URL["pass"],*/env('DB_PASSWORD', 'fb211166919c7edc7838c8929c114a39a62cc09f0f0d7612b3f813fd23acb745'),
+            'host' => env('DB_HOST', 'ec2-107-22-245-82.compute-1.amazonaws.com'),/*$DATABASE_URL["host"],*/
+            'port' => env('DB_PORT', '5432'),/*$DATABASE_URL["port"],*/
+            'database' => env('DB_DATABASE', 'd7jt41tirq3796'),/*ltrim($DATABASE_URL["path"],'/'),*/
+            'username' => env('DB_USERNAME', 'vvxszmelbpugis'),/*$DATABASE_URL["user"],*/
+            'password' => env('DB_PASSWORD', 'fb211166919c7edc7838c8929c114a39a62cc09f0f0d7612b3f813fd23acb745'),/*$DATABASE_URL["pass"],*/
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
