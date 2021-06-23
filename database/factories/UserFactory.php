@@ -23,7 +23,7 @@ class UserFactory extends Factory
     {
         $roles=["admin","owner","user"];
         return [
-            // 'id' => $this->faker->uuid(),
+            'id' => $this->faker->uuid(),
             'name' => $this->faker->name(),
             'username' => $this->faker->unique()->userName(),
             'email' => $this->faker->unique()->safeEmail(),
