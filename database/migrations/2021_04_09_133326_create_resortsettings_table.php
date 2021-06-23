@@ -21,7 +21,6 @@ class CreateResortsettingsTable extends Migration
             $table->integer('endTime')->nullable();
             $table->integer('defaultRentHours')->nullable();
             $table->string('Resort_id')->index('fk_ResortSettings_Resort1_idx');
-            $table->timestamps();
             $table->softDeletes();
         });
     }

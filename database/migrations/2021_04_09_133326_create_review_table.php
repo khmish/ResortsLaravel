@@ -19,7 +19,6 @@ class CreateReviewTable extends Migration
             $table->text('comment')->nullable();
             $table->string('writtenBy')->index('fk_Review_User1_idx');
             $table->string('Resort_id')->index('fk_Review_Resort1_idx');
-            $table->timestamps();
             $table->softDeletes();
         });
     }

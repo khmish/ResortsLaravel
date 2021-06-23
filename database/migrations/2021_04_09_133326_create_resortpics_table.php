@@ -17,7 +17,6 @@ class CreateResortpicsTable extends Migration
             $table->string('id')->primary();
             $table->string('media')->nullable();
             $table->string('Resort_id')->index('fk_ResortPics_Resort1_idx');
-            $table->timestamps();
             $table->softDeletes();
         });
     }

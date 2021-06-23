@@ -4,8 +4,6 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
 
 class UserFactory extends Factory
 {
@@ -23,32 +21,16 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $roles=['Admin','Customer','Guest'];
-        $email=$this->faker->unique()->safeEmail;
-        $username=Str::of($email)->explode('@');
+        $roles=["admin","owner","user"];
         return [
-            'id'=>Str::uuid(),
-            'name' => $this->faker->name,
-            'username' => $username[0],
-            'eamil' => $email,
+            'id' => $this->faker->uuid(),
+            'name' => $this->faker->name(),
+            'username' => $this->faker->unique()->userName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'role' =>$roles[ rand(0,2)],
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'role' => $roles[rand(0,2)],
-            'updated_at' => now(),
-            'created_at' => now(),
+            // 'updated_at' => now(),
+            // 'created_at' => now(),
         ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function unverified()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'email_verified_at' => null,
-            ];
-        });
     }
 }

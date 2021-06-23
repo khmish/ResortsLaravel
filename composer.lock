@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab9513e3102def800c435192cd8f172b",
+    "content-hash": "24c49d2b6c4be640228ef8f40762b013",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2452,6 +2452,82 @@
                 }
             ],
             "time": "2020-08-18T17:17:46+00:00"
+        },
+        {
+            "name": "salmanzafar/laravel-crud-generator",
+            "version": "v1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/salmanzafar949/Laravel-Crud-Generator.git",
+                "reference": "a4b4848127c0ee8a8de5b2e51234c5a37abd045a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/salmanzafar949/Laravel-Crud-Generator/zipball/a4b4848127c0ee8a8de5b2e51234c5a37abd045a",
+                "reference": "a4b4848127c0ee8a8de5b2e51234c5a37abd045a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^7.1 || ^7.2 || ^7.3 || ^7.4"
+            },
+            "require-dev": {
+                "laravel/framework": "^5.5 || ^6.0 || ^7.0 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Salman\\CrudGenerator\\CrudGeneratorServiceProvider"
+                    ],
+                    "aliases": {
+                        "CrudGenerator": "Salman\\CrudGenerator\\Facades\\CrudGenerator"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Salman\\CrudGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Salman Zafar",
+                    "email": "salmanzafar949@gmail.com"
+                }
+            ],
+            "description": "A simple Laravel library that allows you to create crud operations with a single command",
+            "keywords": [
+                "laravel",
+                "laravel-5",
+                "laravel-6",
+                "laravel-7",
+                "laravel-8",
+                "laravel-api-crud-generator",
+                "laravel-crud-generator",
+                "laravel5",
+                "laravel6",
+                "laravel7",
+                "laravel8"
+            ],
+            "support": {
+                "issues": "https://github.com/salmanzafar949/Laravel-Crud-Generator/issues",
+                "source": "https://github.com/salmanzafar949/Laravel-Crud-Generator/tree/v1.0.5"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/salmanzafar949",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/salmanzafar949",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-10-12T13:42:52+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

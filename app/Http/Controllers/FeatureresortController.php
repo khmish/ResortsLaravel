@@ -2,83 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\FeatureresortRequest;
+use App\Models\Featureresort;
 
 class FeatureresortController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $featureresorts = Featureresort::latest()->get();
+
+        return response(['data' => $featureresorts ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(FeatureresortRequest $request)
     {
-        //
+        $featureresort = Featureresort::create($request->all());
+
+        return response(['data' => $featureresort ], 201);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $featureresort = Featureresort::findOrFail($id);
+
+        return response(['data', $featureresort ], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(FeatureresortRequest $request, $id)
     {
-        //
+        $featureresort = Featureresort::findOrFail($id);
+        $featureresort->update($request->all());
+
+        return response(['data' => $featureresort ], 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Featureresort::destroy($id);
+
+        return response(['data' => null ], 204);
     }
 }

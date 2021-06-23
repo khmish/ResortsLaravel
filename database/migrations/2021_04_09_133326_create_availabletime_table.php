@@ -21,7 +21,6 @@ class CreateAvailabletimeTable extends Migration
             $table->integer('endTime')->nullable();
             $table->string('Resort_id')->index('fk_AvailableTime_Resort1_idx');
             $table->integer('cost')->nullable();
-            $table->timestamps();
             $table->softDeletes();
         });
     }
