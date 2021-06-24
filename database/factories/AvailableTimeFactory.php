@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\AvailableTime;
+use App\Models\Availabletime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AvailabletimeFactory extends Factory
@@ -12,7 +12,7 @@ class AvailabletimeFactory extends Factory
      *
      * @var string
      */
-    protected $model = AvailableTime::class;
+    protected $model = Availabletime::class;
 
     /**
      * Define the model's default state.
