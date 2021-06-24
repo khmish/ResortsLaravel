@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\AvailableTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AvailableTimeFactory extends Factory
+class AvailabletimeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
