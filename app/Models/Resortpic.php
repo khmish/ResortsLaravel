@@ -8,6 +8,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Resortpic
@@ -22,9 +23,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Resortpic extends Model
 {
-    use SoftDeletes;
+    use HasFactory,SoftDeletes;
 	protected $table = 'resortpics';
-	public $incrementing = false;
+	// public $incrementing = false;
 	// public $timestamps = false;
 
 	protected $fillable = [

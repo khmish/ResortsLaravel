@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class Rent
@@ -26,9 +27,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Rent extends Model
 {
-    use SoftDeletes;
+    use HasFactory,SoftDeletes;
 	protected $table = 'rent';
-	public $incrementing = false;
+	// public $incrementing = false;
 	// public $timestamps = false;
 
 	protected $casts = [

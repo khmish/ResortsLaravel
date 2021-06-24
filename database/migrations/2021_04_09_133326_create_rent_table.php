@@ -14,12 +14,14 @@ class CreateRentTable extends Migration
     public function up()
     {
         Schema::create('rent', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('rentedBy', 45)->index('fk_Rent_User1_idx');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('rentedBy');
             $table->dateTime('rentedDate')->nullable();
             $table->integer('state')->nullable();
-            $table->string('AvailableTime_id')->index('fk_Rent_AvailableTime1_idx');
+            $table->unsignedBigInteger('AvailableTime_id');
             $table->softDeletes();
+            $table->timestamps();
+
         });
 
     }

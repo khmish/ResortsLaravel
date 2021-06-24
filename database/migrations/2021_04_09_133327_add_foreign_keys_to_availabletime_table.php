@@ -14,8 +14,8 @@ class AddForeignKeysToAvailabletimeTable extends Migration
     public function up()
     {
         Schema::table('availabletime', function (Blueprint $table) {
-            $table->foreign('Resort_id', 'fk_AvailableTime_Resort1')->references('id')->on('resort')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('createdBy', 'fk_AvailableTime_User1')->references('id')->on('user')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('Resort_id')->references('id')->on('resort');
+            $table->foreign('createdBy')->references('id')->on('user');
         });
     }
 
@@ -27,8 +27,6 @@ class AddForeignKeysToAvailabletimeTable extends Migration
     public function down()
     {
         Schema::table('availabletime', function (Blueprint $table) {
-            $table->dropForeign('fk_AvailableTime_Resort1');
-            $table->dropForeign('fk_AvailableTime_User1');
         });
     }
 }

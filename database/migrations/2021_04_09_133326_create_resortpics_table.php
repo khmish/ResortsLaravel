@@ -14,10 +14,12 @@ class CreateResortpicsTable extends Migration
     public function up()
     {
         Schema::create('resortpics', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->bigIncrements('id');
             $table->string('media')->nullable();
-            $table->string('Resort_id')->index('fk_ResortPics_Resort1_idx');
+            $table->unsignedBigInteger('Resort_id')->index('fk_ResortPics_Resort1_idx');
             $table->softDeletes();
+            $table->timestamps();
+
         });
     }
 

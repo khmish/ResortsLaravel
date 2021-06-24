@@ -15,12 +15,14 @@ class CreateFeatureresortTable extends Migration
     {
         Schema::create('featureresort', function (Blueprint $table) {
             $table->integer('number')->nullable();
-            $table->string('Feature_id')->index('fk_FeatureResort_Feature_idx');
-            $table->string('Resort_id')->index('fk_FeatureResort_Resort1_idx');
+            $table->unsignedBigInteger('Feature_id')->index('fk_FeatureResort_Feature_idx');
+            $table->unsignedBigInteger('Resort_id')->index('fk_FeatureResort_Resort1_idx');
             $table->text('description')->nullable();
             $table->longText('media')->nullable();
             $table->primary(['Feature_id', 'Resort_id']);
             $table->softDeletes();
+            $table->timestamps();
+
         });
     }
 

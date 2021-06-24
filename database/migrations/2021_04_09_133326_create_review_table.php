@@ -14,12 +14,14 @@ class CreateReviewTable extends Migration
     public function up()
     {
         Schema::create('review', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->bigIncrements('id');
             $table->integer('totalStars')->nullable();
             $table->text('comment')->nullable();
-            $table->string('writtenBy')->index('fk_Review_User1_idx');
-            $table->string('Resort_id')->index('fk_Review_Resort1_idx');
+            $table->unsignedBigInteger('writtenBy')->index('fk_Review_User1_idx');
+            $table->unsignedBigInteger('Resort_id')->index('fk_Review_Resort1_idx');
             $table->softDeletes();
+            $table->timestamps();
+
         });
     }
 

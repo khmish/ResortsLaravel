@@ -14,14 +14,16 @@ class CreateResortsettingsTable extends Migration
     public function up()
     {
         Schema::create('resortsettings', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->bigIncrements('id');
             $table->integer('cost')->nullable();
             $table->integer('costWeekend')->nullable();
             $table->integer('startTime')->nullable();
             $table->integer('endTime')->nullable();
             $table->integer('defaultRentHours')->nullable();
-            $table->string('Resort_id')->index('fk_ResortSettings_Resort1_idx');
+            $table->unsignedBigInteger('Resort_id')->index('fk_ResortSettings_Resort1_idx');
             $table->softDeletes();
+            $table->timestamps();
+
         });
     }
 

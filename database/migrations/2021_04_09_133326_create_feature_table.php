@@ -14,9 +14,11 @@ class CreateFeatureTable extends Migration
     public function up()
     {
         Schema::create('feature', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->bigIncrements('id');
             $table->string('name', 45)->nullable();
             $table->softDeletes();
+            $table->timestamps();
+
         });
     }
 

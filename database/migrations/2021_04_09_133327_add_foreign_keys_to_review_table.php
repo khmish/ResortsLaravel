@@ -14,8 +14,8 @@ class AddForeignKeysToReviewTable extends Migration
     public function up()
     {
         Schema::table('review', function (Blueprint $table) {
-            $table->foreign('Resort_id', 'fk_Review_Resort1')->references('id')->on('resort')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('writtenBy', 'fk_Review_User1')->references('id')->on('user')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('Resort_id')->references('id')->on('resort');
+            $table->foreign('writtenBy')->references('id')->on('user');
         });
     }
 
@@ -27,8 +27,6 @@ class AddForeignKeysToReviewTable extends Migration
     public function down()
     {
         Schema::table('review', function (Blueprint $table) {
-            $table->dropForeign('fk_Review_Resort1');
-            $table->dropForeign('fk_Review_User1');
         });
     }
 }

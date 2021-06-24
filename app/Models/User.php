@@ -33,7 +33,7 @@ class User extends Authenticatable
 
     use HasFactory, Notifiable,HasApiTokens,SoftDeletes;
 	protected $table = 'user';
-	public $incrementing = false;
+	// public $incrementing = false;
 	// public $timestamps = false;
 
 	protected $hidden = [

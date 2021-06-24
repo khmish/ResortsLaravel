@@ -14,8 +14,8 @@ class AddForeignKeysToRentTable extends Migration
     public function up()
     {
         Schema::table('rent', function (Blueprint $table) {
-            $table->foreign('AvailableTime_id', 'fk_Rent_AvailableTime1')->references('id')->on('availabletime')->onUpdate('NO ACTION')->onDelete('NO ACTION');
-            $table->foreign('rentedBy', 'fk_Rent_User1')->references('id')->on('user')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('AvailableTime_id')->references('id')->on('availabletime');
+            $table->foreign('rentedBy')->references('id')->on('user');
         });
     }
 
@@ -27,8 +27,6 @@ class AddForeignKeysToRentTable extends Migration
     public function down()
     {
         Schema::table('rent', function (Blueprint $table) {
-            $table->dropForeign('fk_Rent_AvailableTime1');
-            $table->dropForeign('fk_Rent_User1');
         });
     }
 }

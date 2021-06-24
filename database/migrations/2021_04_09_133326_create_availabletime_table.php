@@ -14,14 +14,16 @@ class CreateAvailabletimeTable extends Migration
     public function up()
     {
         Schema::create('availabletime', function (Blueprint $table) {
-            $table->string('id')->primary();
+            $table->bigIncrements('id');
             $table->dateTime('availableDate')->nullable();
-            $table->string('createdBy')->index('fk_AvailableTime_User1_idx');
-            $table->integer('startTime')->nullable();
-            $table->integer('endTime')->nullable();
-            $table->string('Resort_id')->index('fk_AvailableTime_Resort1_idx');
+            $table->unsignedBigInteger('createdBy');
+            $table->time('startTime')->nullable();
+            $table->time('endTime')->nullable();
+            $table->unsignedBigInteger('Resort_id');
             $table->integer('cost')->nullable();
             $table->softDeletes();
+            $table->timestamps();
+
         });
     }
 

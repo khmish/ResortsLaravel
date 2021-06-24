@@ -14,7 +14,7 @@ class AddForeignKeysToResortsettingsTable extends Migration
     public function up()
     {
         Schema::table('resortsettings', function (Blueprint $table) {
-            $table->foreign('Resort_id', 'fk_ResortSettings_Resort1')->references('id')->on('resort')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('Resort_id')->references('id')->on('resort');
         });
     }
 
@@ -26,7 +26,6 @@ class AddForeignKeysToResortsettingsTable extends Migration
     public function down()
     {
         Schema::table('resortsettings', function (Blueprint $table) {
-            $table->dropForeign('fk_ResortSettings_Resort1');
         });
     }
 }
