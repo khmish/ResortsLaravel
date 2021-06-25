@@ -28,7 +28,8 @@ class Featureresort extends Model
 {
     use HasFactory,SoftDeletes;
 	protected $table = 'featureresort';
-	// public $incrementing = false;
+    // protected $primaryKey = ['Feature_id', 'Resort_id'];
+	public $incrementing = false;
 	// public $timestamps = false;
 
 	protected $casts = [
