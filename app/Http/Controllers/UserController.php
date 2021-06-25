@@ -25,6 +25,10 @@ class UserController extends Controller
         //     'email' => $request->email,
         //     'password' => Hash::make($request->password),
         // ]);
+        // $validatedData = $request->validate([
+        //     'title' => ['required', 'unique:posts', 'max:255'],
+        //     'body' => ['required'],
+        // ]);
         $user = new User;
         $user->name=$request->name;
         $user->email=$request->email;
