@@ -19,14 +19,22 @@ class UserController extends Controller
 
     public function register(UserRequest $request)
     {
-        return $request->dd();
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        // return $request->dd();
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
+        $user = new User;
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        if($user->save())
+        {
 
-        return response(['data' => $user], 201);
+            return response(['data' => $user], 201);
+        }
+        return response(['data' =>"something went wrong!"], 400);
     }
     public function login(UserRequest $request)
     {
