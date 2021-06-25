@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
         Availabletime::factory(100)->create();
         Rent::factory(100)->create();
         Feature::factory(100)->create();
-        Featureresort::factory(10)->create();
+        Featureresort::factory(5)->create();
     }
 }
