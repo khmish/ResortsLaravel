@@ -32,6 +32,13 @@ class User extends Authenticatable
 {
 
     use HasFactory, Notifiable,HasApiTokens,SoftDeletes;
+
+    public const VALDATIONS_RULES_CEARTE=[
+        'name' => ['required'],
+        'email' => ['required','unique'],
+        'username' => ['required','unique'],
+        'password' => ['required']
+    ];
 	protected $table = 'user';
 	// public $incrementing = false;
 	// public $timestamps = false;

@@ -18,7 +18,7 @@ class CreateUserTable extends Migration
             $table->string('email', 80);
             $table->string('username', 80)->nullable();
             $table->string('name', 80);
-            $table->string('role')->nullable();
+            $table->string('role')->default("user");
             $table->string('password');
             $table->timestamps();
             $table->softDeletes();

@@ -19,18 +19,9 @@ class UserController extends Controller
 
     public function register(UserRequest $request)
     {
-        // return $request->dd();
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
-        // $validatedData = $request->validate([
-        //     'title' => ['required', 'unique:posts', 'max:255'],
-        //     'body' => ['required'],
-        // ]);
         $user = new User;
         $user->name=$request->name;
+        $user->username=$request->username;
         $user->email=$request->email;
         $user->password=Hash::make($request->password);
         if($user->save())
@@ -66,9 +57,19 @@ class UserController extends Controller
     public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
-        $user->update($request->all());
+        if(strlen(trim($request->name))>0){
+            $user->name=$request->name;
+        }
+        if(strlen(trim($request->password))>0){
+            $user->password=Hash::make($request->password);
+        }
+        if($user->save())
+        {
 
-        return response(['data' => $user], 200);
+            return response(['saved' => $user], 200);
+        }
+
+        return response(['error' => "something went wrong"], 400);
     }
 
     public function destroy($id)
