@@ -16,9 +16,15 @@ class ResortController extends Controller
 
     public function store(ResortRequest $request)
     {
-        $resort = Resort::create($request->all());
+        // dd($request->all());
+        $resort = new Resort;
+        $resort->name =$request->name;
+        $resort->district_id =$request->district_id;
+        if($resort->save()){
 
-        return response(['data' => $resort ], 201);
+            return response(['data' => $resort ], 201);
+        }
+        return response(['error' => "something went wrong" ], 400);
 
     }
 
@@ -40,8 +46,13 @@ class ResortController extends Controller
 
     public function destroy($id)
     {
-        Resort::destroy($id);
+        $resort = Resort::findOrFail($id);
+        if($resort->delete())
+        {
 
-        return response(['data' => null ], 204);
+            return response(['data' => null ], 204);
+        }
+        return response(['error' => "something went wrong" ], 400);
+
     }
 }
