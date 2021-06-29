@@ -15,24 +15,22 @@ class UserRequest extends FormRequest
 
     public function rules()
     {
-        if($this->getMethod()=="POST"){
+        if ($this->getMethod() == "POST") {
             return User::VALDATIONS_RULES_CEARTE;
-        }
-        else
-        {
-            $array=User::VALDATIONS_RULES_CEARTE;
-            $array=Arr::forget($array, ['email', 'username']);
+        } else {
+            $array = User::VALDATIONS_RULES_CEARTE;
 
-            //not empty or whitespaces
-            $array = Arr::where($array, function ($value, $key) {
-                return strlen(trim($value))>0;
+            $collection = collect($array);
+            $collection = $collection->except(['username', 'email'])
+            ->filter(function ($value, $key) {
+                //not empty or whitespace
+                if (strlen(trim($key)) > 0) {
+
+                    return $key;
+                }
             });
-            if(Arr::hasAny($array, ['name', 'password']))
-            {
-                return [];
-            }
-            return $array;
 
+            return $collection->toArray();
         }
     }
 }
