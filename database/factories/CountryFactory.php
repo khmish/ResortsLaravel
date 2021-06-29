@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Resort;
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ResortFactory extends Factory
+class CountryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Resort::class;
+    protected $model = Country::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,8 @@ class ResortFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->words(3, true),
-            'description' => $this->faker->words(5, true),
-            'district_id' => rand(1,10),
+            //
+            'name' => $this->faker->country,
         ];
     }
 }

@@ -20,6 +20,7 @@ class CreateResortTable extends Migration
             $table->string('longitude', 45)->nullable();
             $table->string('latitude', 45)->nullable();
             $table->string('media')->nullable();
+            $table->unsignedBigInteger('district_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

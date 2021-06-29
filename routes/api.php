@@ -7,6 +7,7 @@ use App\Http\Controllers\AvailabletimeController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\FeatureresortController;
 use App\Http\Controllers\RentController;
+use App\Http\Controllers\ResortController;
 use App\Http\Controllers\ReviewController;
 
 /*
@@ -29,6 +30,7 @@ Route::apiResource('features', FeatureController::class);
 Route::apiResource('featureresorts', FeatureresortController::class);
 Route::apiResource('rents', RentController::class);
 Route::apiResource('reviews', ReviewController::class);
+Route::apiResource('resorts', ResortController::class);
 
 
 Route::post('/login', [UserController::class, 'login']);

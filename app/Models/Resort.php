@@ -69,4 +69,8 @@ class Resort extends Model
 	{
 		return $this->hasMany(Review::class, 'Resort_id');
 	}
+    public function district()
+	{
+		return $this->belongsTo(District::class, 'district_id');
+	}
 }

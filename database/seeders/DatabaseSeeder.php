@@ -4,6 +4,9 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Resort;
 use App\Models\Availabletime;
+use App\Models\City;
+use App\Models\Country;
+use App\Models\District;
 use App\Models\Rent;
 use App\Models\Feature;
 use App\Models\Featureresort;
@@ -19,6 +22,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
+        Country::factory(10)->create();
+        City::factory(10)->create();
+        District::factory(10)->create();
         Resort::factory(10)->create();
         Availabletime::factory(100)->create();
         Rent::factory(100)->create();
