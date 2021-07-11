@@ -34,8 +34,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable,HasApiTokens,SoftDeletes;
 
     public const VALDATIONS_RULES_CEARTE=[
-        'name' => ['required'],
-        'email' => ['required',"unique:App\Models\User,email"],
+        // 'name' => ['required'],
+        // 'email' => ['required',"unique:App\Models\User,email"],
         'username' => ['required',"unique:App\Models\User,username"],
         'password' => ['required']
     ];
