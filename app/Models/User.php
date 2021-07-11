@@ -35,9 +35,9 @@ class User extends Authenticatable
 
     public const VALDATIONS_RULES_CEARTE=[
         // 'name' => ['required'],
-        'email' => ['required',"unique:App\Models\User,email"],
+        // 'email' => ['required',"unique:App\Models\User,email"],
         // 'username' => ['required',"unique:App\Models\User,username"],
-        'password' => ['required']
+        // 'password' => ['required']
     ];
 	protected $table = 'user';
 	// public $incrementing = false;
