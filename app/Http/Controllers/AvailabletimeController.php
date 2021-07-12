@@ -27,8 +27,7 @@ class AvailabletimeController extends Controller
     public function show($id)
     {
         $availabletime = Availabletime::findOrFail($id);
-
-        // return new AvailabletimeCollection($availabletime);
+        $availabletime = new AvailabletimeCollection($availabletime);
         return response(['data', $availabletime ], 200);
     }
 

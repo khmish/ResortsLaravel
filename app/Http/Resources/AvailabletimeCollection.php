@@ -17,7 +17,20 @@ class AvailabletimeCollection extends JsonResource
         return [
             'id' => $this->id,
             'availableDate' => $this->availableDate,
-            'resort' => $this->resort,
+            'startTime' => $this->startTime,
+            'endTime' => $this->endTime,
+            'resort' => [
+                "id"=> $this->resort->id,
+                "name"=> $this->resort->name,
+                "description"=> $this->resort->description,
+                "media"=> $this->resort->media,
+                "longitude"=> $this->resort->longitude,
+                "latitude"=> $this->resort->latitude,
+                "dist"=>$this->resort->district->name,
+                "city"=>$this->resort->district->city->name,
+                "country"=>$this->resort->district->city->country->name,
+
+            ],
             'features' => $this->features,
             'reviews' => $this->reviews,
             'cost' => $this->cost,
