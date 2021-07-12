@@ -1,17 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Http\Requests\AvailabletimeRequest;
+use App\Http\Resources\AvailabletimeCollection;
 use App\Models\Availabletime;
 
 class AvailabletimeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $availabletimes = Availabletime::latest()->get();
-
-        return response(['data' => $availabletimes ], 200);
+        $availabletimes = Availabletime::all();
+        $availabletimes = AvailabletimeCollection::collection($availabletimes);
+        $availabletimes =parent::paginate($availabletimes,$perPage = $request->itemsPerPage ,$page = $request->page);
+        return response($availabletimes , 200);
     }
 
     public function store(AvailabletimeRequest $request)
@@ -26,6 +28,7 @@ class AvailabletimeController extends Controller
     {
         $availabletime = Availabletime::findOrFail($id);
 
+        // return new AvailabletimeCollection($availabletime);
         return response(['data', $availabletime ], 200);
     }
 
