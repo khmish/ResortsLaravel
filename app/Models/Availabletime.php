@@ -37,8 +37,8 @@ class Availabletime extends Model
 	// public $timestamps = false;
 
 	protected $casts = [
-		'startTime' => 'int',
-		'endTime' => 'int',
+		'startTime' => 'string',
+		'endTime' => 'string',
 		'cost' => 'int'
 	];
 
