@@ -26,9 +26,9 @@ class AvailabletimeCollection extends JsonResource
                 "media"=> $this->resort->media,
                 "longitude"=> $this->resort->longitude,
                 "latitude"=> $this->resort->latitude,
-                "dist"=>$this->resort->district->name,
-                "city"=>$this->resort->district->city->name,
-                "country"=>$this->resort->district->city->country->name,
+                // "dist"=>$this->district->name,
+                // "city"=>$this->district->city->name,
+                // "country"=>$this->district->city->country->name,
 
             ],
             'features' => $this->features,

@@ -4,11 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AvailabletimeController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\FeatureresortController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\ResortController;
 use App\Http\Controllers\ReviewController;
+use App\Models\District;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +34,8 @@ Route::apiResource('featureresorts', FeatureresortController::class);
 Route::apiResource('rents', RentController::class);
 Route::apiResource('reviews', ReviewController::class);
 Route::apiResource('resorts', ResortController::class);
+Route::apiResource('cities', CityController::class);
+Route::apiResource('districts', DistrictController::class);
 
 
 Route::post('/login', [UserController::class, 'login']);
