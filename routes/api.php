@@ -12,7 +12,6 @@ use App\Http\Controllers\FeatureresortController;
 use App\Http\Controllers\RentController;
 use App\Http\Controllers\ResortController;
 use App\Http\Controllers\ReviewController;
-use App\Models\District;
 
 /*
 |--------------------------------------------------------------------------

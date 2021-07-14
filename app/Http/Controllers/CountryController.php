@@ -21,7 +21,7 @@ class CountryController extends Controller
         return response(['data' => $country ], 201);
 
     }
-
+    
     public function show($id)
     {
         $country = Country::findOrFail($id);
