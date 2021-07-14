@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CityRequest;
 use App\Models\City;
+use App\Models\Country;
 
 class CityController extends Controller
 {
@@ -13,6 +14,13 @@ class CityController extends Controller
 
         return response(['data' => $cities ], 200);
     }
+    public function citiesInCountry($countryName)
+    {
+        $result = Country::where("name",$countryName)->first();
+        $cities = City::where("country_id",$result->id)->get();
+        return response(['data' => $cities ], 200);
+    }
+
 
     public function store(CityRequest $request)
     {

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AvailabletimeController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\FeatureController;
 use App\Http\Controllers\FeatureresortController;
@@ -34,9 +35,14 @@ Route::apiResource('featureresorts', FeatureresortController::class);
 Route::apiResource('rents', RentController::class);
 Route::apiResource('reviews', ReviewController::class);
 Route::apiResource('resorts', ResortController::class);
+Route::apiResource('countries', CountryController::class);
 Route::apiResource('cities', CityController::class);
 Route::apiResource('districts', DistrictController::class);
 
 
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
+
+
+Route::get('citiesInCountry/{countryName}', [CityController::class,"citiesInCountry"]);
+Route::get('districtsInCity/{cityName}', [DistrictController::class,"districtsInCity"]);

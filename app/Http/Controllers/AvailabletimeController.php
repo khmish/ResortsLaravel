@@ -12,32 +12,22 @@ class AvailabletimeController extends Controller
     {
 
         $availabletimes = Availabletime::
-        with(['district','resort'])
-        ->
-        get();
-        // $availabletimes = AvailabletimeCollection::collection($availabletimes);
-        // return $availabletimes;
+        with(['district','resort'])->get();
+
         if($request->has("availableDate"))
         {
             $availabletimes =$availabletimes->where("availableDate",">",date($request->availableDate))->sortBy("availableDate");
-            // return ($availabletimes);
+
         }
         if($request->has("dist"))
         {
             $availabletimes=$availabletimes
-
-            ->where("district.name","like",$request->dist)
-            // ->limit(10)
-            ;
-            // return ($availabletimes);
+            ->where("district.name","like",$request->dist);
         }
-        // $availabletimes = Availabletime::get();
-        // $availabletimes = Availabletime::get();
 
         $availabletimes = AvailabletimeCollection::collection($availabletimes);
         $availabletimes =parent::paginate($availabletimes,$perPage = $request->itemsPerPage ,$page = $request->page);
-        // Debugbar::info($availabletimes);
-        // throw $availabletimes;
+        
         return response($availabletimes , 200);
     }
 
