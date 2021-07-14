@@ -59,6 +59,16 @@ class Availabletime extends Model
 	{
 		return $this->belongsTo(Resort::class, 'Resort_id');
 	}
+    public function district()
+	{
+		return $this->hasOneThrough(
+            District::class,
+            Resort::class,
+            'id',
+            'id'
+        );
+	}
+
 
 	public function user()
 	{

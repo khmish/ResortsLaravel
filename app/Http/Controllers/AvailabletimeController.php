@@ -10,7 +10,30 @@ class AvailabletimeController extends Controller
 {
     public function index(Request $request)
     {
-        $availabletimes = Availabletime::all();
+
+        $availabletimes = Availabletime::
+        with(['district'])
+        ->
+        get();
+        // $availabletimes = AvailabletimeCollection::collection($availabletimes);
+        // return $availabletimes;
+        if($request->has("availableDate"))
+        {
+            $availabletimes =$availabletimes->where("availableDate",">",date($request->availableDate))->sortBy("availableDate");
+            // return ($availabletimes);
+        }
+        if($request->has("dist"))
+        {
+            $availabletimes=$availabletimes
+
+            ->where("resort.district.name","like",$request->dist)
+            // ->limit(10)
+            ;
+            // return ($availabletimes);
+        }
+        // $availabletimes = Availabletime::get();
+        // $availabletimes = Availabletime::get();
+
         $availabletimes = AvailabletimeCollection::collection($availabletimes);
         $availabletimes =parent::paginate($availabletimes,$perPage = $request->itemsPerPage ,$page = $request->page);
         return response($availabletimes , 200);
@@ -27,6 +50,7 @@ class AvailabletimeController extends Controller
     public function show($id)
     {
         $availabletime = Availabletime::findOrFail($id);
+
         $availabletime = new AvailabletimeCollection($availabletime);
         return response(['data', $availabletime ], 200);
     }
