@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AvailabletimeRequest;
 use App\Http\Resources\AvailabletimeCollection;
 use App\Models\Availabletime;
+use App\Models\Rent;
 
 class AvailabletimeController extends Controller
 {
@@ -13,11 +14,17 @@ class AvailabletimeController extends Controller
 
         $availabletimes = Availabletime::
         with(['district','resort'])->get();
+        $c=collect($availabletimes)->pluck('id')->toArray();
+
+        /// check the avaliable time is not rented yet
+        $rents= Rent::whereIn('AvailableTime_id',$c)->orderBy('AvailableTime_id')->get();
+        $rents=$rents->pluck('AvailableTime_id')->toArray();
+
+        $availabletimes= $availabletimes->whereNotIn('id',$rents);
 
         if($request->has("availableDate"))
         {
-            $availabletimes =$availabletimes->where("availableDate",">",date($request->availableDate))->sortBy("availableDate");
-
+            $availabletimes =$availabletimes->where("availableDate",">=",date($request->availableDate))->sortBy("availableDate");
         }
         if($request->has("dist"))
         {
@@ -27,7 +34,7 @@ class AvailabletimeController extends Controller
 
         $availabletimes = AvailabletimeCollection::collection($availabletimes);
         $availabletimes =parent::paginate($availabletimes,$perPage = $request->itemsPerPage ,$page = $request->page);
-        
+
         return response($availabletimes , 200);
     }
 
