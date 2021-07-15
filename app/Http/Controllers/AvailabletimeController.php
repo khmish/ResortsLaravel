@@ -29,7 +29,8 @@ class AvailabletimeController extends Controller
         if($request->has("dist"))
         {
             $availabletimes=$availabletimes
-            ->where("district.name","like",$request->dist);
+            ->where("resort.district.name","=",$request->dist);
+            // return $availabletimes;
         }
 
         $availabletimes = AvailabletimeCollection::collection($availabletimes);
