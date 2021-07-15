@@ -24,7 +24,7 @@ class DistrictFactory extends Factory
         return [
             //
             'name' => $this->faker->streetName,
-            "city_id" => rand(1,10)
+            "city_id" => rand(1,6)
         ];
     }
 }

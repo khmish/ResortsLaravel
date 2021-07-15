@@ -22,9 +22,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(10)->create();
-        Country::factory(10)->create();
-        City::factory(10)->create();
-        District::factory(10)->create();
+        // Country::factory(1)->create();
+        // City::factory(1)->make([]);
+        $this->call([
+            CountrySeeder::class,
+            CitySeeder::class,
+        ]);
+        District::factory(6)->create();
         Resort::factory(10)->create();
         Availabletime::factory(100)->create();
         Rent::factory(100)->create();

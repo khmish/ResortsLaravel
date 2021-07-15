@@ -24,7 +24,7 @@ class ResortFactory extends Factory
         return [
             'name' => $this->faker->words(3, true),
             'description' => $this->faker->words(5, true),
-            'district_id' => rand(1,10),
+            'district_id' => rand(1,6),
         ];
     }
 }

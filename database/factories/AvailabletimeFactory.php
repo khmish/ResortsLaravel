@@ -22,7 +22,7 @@ class AvailabletimeFactory extends Factory
     public function definition()
     {
         return [
-            'availableDate' => $this->faker->date(),
+            'availableDate' => $this->faker->dateTimeBetween($startDate = 'now', $endDate = '1 year')->format("Y-m-d"),
             'startTime' => $this->faker->time(),
             'endTime' => $this->faker->time(),
             'createdBy' => rand(1,10),

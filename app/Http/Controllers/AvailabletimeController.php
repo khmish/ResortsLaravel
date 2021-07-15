@@ -24,12 +24,12 @@ class AvailabletimeController extends Controller
 
         if($request->has("availableDate"))
         {
-            $availabletimes =$availabletimes->where("availableDate",">=",date($request->availableDate))->sortBy("availableDate");
+            $availabletimes =$availabletimes->where("availableDate",">=",date($request->availableDate))->sortBy("availableDate", SORT_NATURAL);
         }
         if($request->has("dist"))
         {
             $availabletimes=$availabletimes
-            ->where("resort.district.name","=",$request->dist);
+            ->where("resort.district.name","like",$request->dist);
             // return $availabletimes;
         }
 
