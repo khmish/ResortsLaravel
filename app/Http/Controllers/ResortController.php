@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ResortRequest;
+use App\Models\District;
 use App\Models\Resort;
 
 class ResortController extends Controller
@@ -20,7 +21,8 @@ class ResortController extends Controller
         $resort = new Resort;
         $resort->name =$request->name;
         $resort->description =$request->description;
-        $resort->district_id =$request->district_id;
+        $dist_id=District::where("name",$request->district_id)->first()->id;
+        $resort->district_id =$dist_id;
         if($resort->save()){
 
             return response(['data' => $resort ], 201);
