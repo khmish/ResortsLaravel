@@ -19,6 +19,7 @@ class ResortController extends Controller
         // dd($request->all());
         $resort = new Resort;
         $resort->name =$request->name;
+        $resort->description =$request->description;
         $resort->district_id =$request->district_id;
         if($resort->save()){
 
