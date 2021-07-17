@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 use App\Http\Resources\RentCollection;
+use Illuminate\Http\Request;
 
 use App\Http\Requests\RentRequest;
 use App\Models\Rent;
+use App\Models\User;
 
 class RentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $rents = Rent::latest()->get();
+        $user= User::where("email",$request->user)->first();
+        $rents = Rent::
+        where('rentedBy',$user->id)->
+        latest()->
+        get();
         $rents =parent::paginate(RentCollection::collection($rents));
         return response( $rents , 200);
     }
