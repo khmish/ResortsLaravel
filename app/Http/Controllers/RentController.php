@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Resources\RentCollection;
 
 use App\Http\Requests\RentRequest;
 use App\Models\Rent;
@@ -10,7 +11,7 @@ class RentController extends Controller
     public function index()
     {
         $rents = Rent::latest()->get();
-
+        $rents =parent::paginate(RentCollection::collection($rents));
         return response(['data' => $rents ], 200);
     }
 
@@ -26,7 +27,7 @@ class RentController extends Controller
     {
         $rent = Rent::findOrFail($id);
 
-        return response(['data', $rent ], 200);
+        return response(['data'=> $rent ], 200);
     }
 
     public function update(RentRequest $request, $id)
