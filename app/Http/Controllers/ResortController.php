@@ -36,7 +36,7 @@ class ResortController extends Controller
         $resort = Resort::findOrFail($id);
 
         // return $resort->district->city->country;
-        return response(['data', $resort ], 200);
+        return response(['data' => $resort ], 200);
     }
 
     public function update(ResortRequest $request, $id)
