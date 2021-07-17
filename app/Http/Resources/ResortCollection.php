@@ -22,8 +22,6 @@ class ResortCollection extends JsonResource
             "district"=>$this->district,
             "city"=>$this->district->city,
             "country"=>$this->district->city->country,
-            
-
         ];
     }
 }
