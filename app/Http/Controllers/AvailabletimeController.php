@@ -12,10 +12,10 @@ class AvailabletimeController extends Controller
     public function index(Request $request)
     {
 
-        $availabletimes = Availabletime::
+        $availabletimes = Availabletime::where('resort.district.name','!=','.')->
         // with(['district','resort'])->
         get();
-        $c=collect($availabletimes->where('resort.district.name','!=','.'))->pluck('id')->toArray();
+        $c=collect($availabletimes)->pluck('id')->toArray();
 
         /// check the avaliable time is not rented yet
         $rents= Rent::whereIn('AvailableTime_id',$c)->orderBy('AvailableTime_id')->get();
