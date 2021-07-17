@@ -21,7 +21,7 @@ class AvailabletimeController extends Controller
         $rents=$rents->pluck('AvailableTime_id')->toArray();
 
         $availabletimes= $availabletimes->whereNotIn('id',$rents);
-        return AvailabletimeCollection::collection($availabletimes);
+        // return AvailabletimeCollection::collection($availabletimes);
 
         if($request->has("availableDate"))
         {
