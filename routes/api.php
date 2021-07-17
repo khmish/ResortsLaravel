@@ -40,6 +40,7 @@ Route::apiResource('districts', DistrictController::class);
 
 
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/me', [UserController::class, 'me'])->middleware(['auth:sanctum']);
 Route::post('/register', [UserController::class, 'register']);
 
 
