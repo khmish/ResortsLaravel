@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 use App\Models\Availabletime;
-
+use App\Http\Resources\ResortCollection;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AvailabletimeCollection extends JsonResource
@@ -21,8 +21,7 @@ class AvailabletimeCollection extends JsonResource
             'availableDate' => $this->availableDate,
             'startTime' => $this->startTime,
             'endTime' => $this->endTime,
-            'resort' =>  $this->resort,
-            'district' =>  $this->resort->district,
+            'resort' =>  new ResortCollection($this->resort),
             'features' => $this->features,
             'reviews' => $this->reviews,
             'cost' => $this->cost,

@@ -22,9 +22,7 @@ class AvailabletimeController extends Controller
         $rents=$rents->pluck('AvailableTime_id')->toArray();
 
         $availabletimes= $availabletimes->whereNotIn('id',$rents);
-        // return AvailabletimeCollection::collection($availabletimes);
-        $availabletimes=$availabletimes
-            ->where("resort.district.name",'<>','0');
+        
 
         if($request->has("availableDate"))
         {
