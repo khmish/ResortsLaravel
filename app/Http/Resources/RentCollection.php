@@ -20,6 +20,7 @@ class RentCollection extends JsonResource
             "rentedDate" => $this->rentedDate,
             "state" => $this->state,
             "AvailableTime_id" => $this->availabletime,
+            "resort" => $this->availabletime->resort,
         ];
     }
 }
