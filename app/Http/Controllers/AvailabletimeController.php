@@ -12,8 +12,8 @@ class AvailabletimeController extends Controller
     public function index(Request $request)
     {
 
-        $availabletimes = Availabletime::where('resort.district.name','!=','.')->
-        // with(['district','resort'])->
+        $availabletimes = Availabletime::
+        with(['district','resort'])->
         get();
         $c=collect($availabletimes)->pluck('id')->toArray();
 
