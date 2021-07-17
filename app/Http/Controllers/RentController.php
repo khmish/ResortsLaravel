@@ -12,11 +12,17 @@ class RentController extends Controller
 {
     public function index(Request $request)
     {
-        $user= User::where("email",$request->user)->first();
         $rents = Rent::
-        where('rentedBy',$user->id)->
-        latest()->
-        get();
+            // where('rentedBy',$user->id)->
+            latest()->
+            get();
+        if($request->has('user'))
+        {
+            $user= User::where("email",$request->user)->first();
+            $rents =$rents->
+            where('rentedBy',$user->id);
+
+        }
         $rents =parent::paginate(RentCollection::collection($rents));
         return response( $rents , 200);
     }
