@@ -13,7 +13,7 @@ class AvailabletimeController extends Controller
     {
 
         $availabletimes = Availabletime::
-        with(['district','resort'])->get();
+        with(['district'])->get();
         $c=collect($availabletimes)->pluck('id')->toArray();
 
         /// check the avaliable time is not rented yet
