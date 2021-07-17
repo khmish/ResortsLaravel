@@ -15,7 +15,7 @@ class AvailabletimeController extends Controller
         $availabletimes = Availabletime::
         // with(['district','resort'])->
         get();
-        $c=collect($availabletimes)->where('resort.district.name','!=','.')->pluck('id')->toArray();
+        $c=collect($availabletimes->where('resort.district.name','!=','.'))->pluck('id')->toArray();
 
         /// check the avaliable time is not rented yet
         $rents= Rent::whereIn('AvailableTime_id',$c)->orderBy('AvailableTime_id')->get();
