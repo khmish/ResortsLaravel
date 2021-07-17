@@ -22,7 +22,7 @@ class AvailabletimeCollection extends JsonResource
             'startTime' => $this->startTime,
             'endTime' => $this->endTime,
             'resort' =>  $this->resort,
-            'district' =>  $this->district,
+            'district' =>  $this->resort->district,
             'features' => $this->features,
             'reviews' => $this->reviews,
             'cost' => $this->cost,
