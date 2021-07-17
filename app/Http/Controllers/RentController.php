@@ -12,7 +12,7 @@ class RentController extends Controller
     {
         $rents = Rent::latest()->get();
         $rents =parent::paginate(RentCollection::collection($rents));
-        return response(['data' => $rents ], 200);
+        return response( $rents , 200);
     }
 
     public function store(RentRequest $request)
