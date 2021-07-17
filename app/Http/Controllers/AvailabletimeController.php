@@ -13,7 +13,7 @@ class AvailabletimeController extends Controller
     {
 
         $availabletimes = Availabletime::
-        with(['district','resort'])->
+        // with(['district','resort'])->
         get();
         $c=collect($availabletimes)->pluck('id')->toArray();
 
@@ -23,6 +23,8 @@ class AvailabletimeController extends Controller
 
         $availabletimes= $availabletimes->whereNotIn('id',$rents);
         // return AvailabletimeCollection::collection($availabletimes);
+        $availabletimes=$availabletimes
+            ->where("resort.district.name",'<>','0');
 
         if($request->has("availableDate"))
         {
