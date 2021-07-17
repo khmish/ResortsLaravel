@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ResortRequest;
 use App\Models\District;
 use App\Models\Resort;
+use App\Http\Resources\ResortCollection;
 
 class ResortController extends Controller
 {
@@ -35,6 +36,8 @@ class ResortController extends Controller
     {
         $resort = Resort::findOrFail($id);
 
+        // return $resort;
+        $resort =new ResortCollection($resort);
         // return $resort->district->city->country;
         return response(['data' => $resort ], 200);
     }
