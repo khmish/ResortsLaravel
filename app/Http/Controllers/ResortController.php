@@ -12,22 +12,16 @@ class ResortController extends Controller
 {
     public function index(Request $request)
     {
-        $resorts = Resort::latest()->get();
+        $resorts = Resort::latest();
         if($request->has('user')){
             
             $resorts = $resorts->where('createdBy',$request->user);
         }
 
 
-        return response(['data' => $resorts ], 200);
+        return response(['data' => $resorts->get() ], 200);
     }
-    public function resortByUser(Request $request)
-    {
-        $resorts = Resort::where('createdBy',$request->user)->latest()->get();
-
-        return response(['data' => $resorts->id ], 200);
-    }
-
+    
     public function store(ResortRequest $request)
     {
         // dd($request->all());

@@ -63,6 +63,10 @@ class User extends Authenticatable
 	{
 		return $this->hasMany(Rent::class, 'rentedBy');
 	}
+	public function resorts()
+	{
+		return $this->hasMany(Resort::class, 'createdBy');
+	}
 
 	public function reviews()
 	{
