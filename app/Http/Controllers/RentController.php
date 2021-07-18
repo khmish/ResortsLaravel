@@ -29,9 +29,27 @@ class RentController extends Controller
 
     public function store(RentRequest $request)
     {
-        $rent = Rent::create($request->all());
+        $user=null;
+        $rent=new Rent;
+        $rent->AvailableTime_id=$request->AvailableTime_id;
+        $rent->rentedDate=now();
+        if(!is_numeric($request->rentedBy)){
+            $user= User::where("email",$request->rentedBy)->first();
+            // return $user;
+            $rent->rentedBy=$user->id;
 
-        return response(['data' => $rent ], 201);
+        }
+        else{
+
+            $rent->rentedBy=$request->rentedBy;
+        }
+        
+        if($rent->save()){
+
+            return response(['data' => $rent ], 201);
+        }
+        return response(['data' => "something went wrong" ], 400);
+
 
     }
 
