@@ -32,6 +32,7 @@ class RentController extends Controller
         $user=null;
         $rent=new Rent;
         $rent->AvailableTime_id=$request->AvailableTime_id;
+        $rent->state=1;
         $rent->rentedDate=now();
         if(!is_numeric($request->rentedBy)){
             $user= User::where("email",$request->rentedBy)->first();
