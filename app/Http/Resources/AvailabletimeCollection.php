@@ -21,6 +21,7 @@ class AvailabletimeCollection extends JsonResource
             'availableDate' => $this->availableDate,
             'startTime' => $this->startTime,
             'endTime' => $this->endTime,
+            'createdBy' => $this->createdBy,
             'resort' =>  new ResortCollection($this->resort),
             'features' => $this->features,
             'reviews' => $this->reviews,
