@@ -34,6 +34,12 @@ class AvailabletimeController extends Controller
             ->where("resort.district.name",$request->dist);
             // return $availabletimes;
         }
+        if($request->has("Resort_id"))
+        {
+            $availabletimes=$availabletimes
+            ->where("Resort_id",$request->Resort_id);
+            // return $availabletimes;
+        }
 
         $availabletimes = AvailabletimeCollection::collection($availabletimes);
         $availabletimes =parent::paginate($availabletimes,$perPage = $request->itemsPerPage ,$page = $request->page);
