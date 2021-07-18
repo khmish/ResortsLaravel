@@ -73,4 +73,8 @@ class Resort extends Model
 	{
 		return $this->belongsTo(District::class, 'district_id');
 	}
+    public function user()
+	{
+		return $this->belongsTo(User::class, 'createdBy');
+	}
 }

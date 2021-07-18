@@ -6,14 +6,26 @@ use App\Http\Requests\ResortRequest;
 use App\Models\District;
 use App\Models\Resort;
 use App\Http\Resources\ResortCollection;
+use Illuminate\Http\Request;
 
 class ResortController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $resorts = Resort::latest()->get();
+        if($request->has('user')){
+            
+            $resorts = $resorts->where('createdBy',$request->user);
+        }
+
 
         return response(['data' => $resorts ], 200);
+    }
+    public function resortByUser(Request $request)
+    {
+        $resorts = Resort::where('createdBy',$request->user)->latest()->get();
+
+        return response(['data' => $resorts->id ], 200);
     }
 
     public function store(ResortRequest $request)

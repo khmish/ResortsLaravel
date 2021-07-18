@@ -21,6 +21,7 @@ class CreateResortTable extends Migration
             $table->string('latitude', 45)->nullable();
             $table->string('media')->nullable();
             $table->unsignedBigInteger('district_id')->nullable();
+            $table->unsignedBigInteger('createdBy')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

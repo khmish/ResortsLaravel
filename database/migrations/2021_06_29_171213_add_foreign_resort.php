@@ -16,6 +16,7 @@ class AddForeignResort extends Migration
         Schema::table('resort', function (Blueprint $table) {
             
             $table->foreign('district_id')->references('id')->on('districts');
+            $table->foreign('createdBy')->references('id')->on('user');
 
         });
     }
