@@ -27,11 +27,11 @@ use App\Http\Controllers\ReviewController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('users', UserController::class);
+Route::apiResource('users', UserController::class)->middleware(['auth:sanctum']);
 Route::apiResource('availabletimes', AvailabletimeController::class);
 Route::apiResource('features', FeatureController::class);
 Route::apiResource('featureresorts', FeatureresortController::class);
-Route::apiResource('rents', RentController::class);
+Route::apiResource('rents', RentController::class)->middleware(['auth:sanctum']);
 Route::apiResource('reviews', ReviewController::class);
 Route::apiResource('resorts', ResortController::class);
 Route::apiResource('countries', CountryController::class);
