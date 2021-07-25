@@ -27,6 +27,7 @@ class ResortController extends Controller
         // dd($request->all());
         $resort = new Resort;
         $resort->name =$request->name;
+        $resort->createdBy =$request->createdBy;
         $resort->description =$request->description;
         $dist_id=District::where("name",$request->district_id)->first()->id;
         $resort->district_id =$dist_id;
