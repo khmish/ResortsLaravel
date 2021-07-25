@@ -22,15 +22,16 @@ class ResortController extends Controller
         return response(['data' => $resorts->get() ], 200);
     }
     
-    public function store(ResortRequest $request)
+    public function store(Request $request)
     {
         // dd($request->all());
         $resort = new Resort;
         $resort->name =$request->name;
         $resort->createdBy =$request->createdBy;
         $resort->description =$request->description;
-        $dist_id=District::where("name",$request->district_id)->first()->id;
+        $dist_id=District::where("name","=",$request->district_id)->first()->id;
         $resort->district_id =$dist_id;
+        // return $resort;
         if($resort->save()){
 
             return response(['data' => $resort ], 201);
@@ -52,9 +53,17 @@ class ResortController extends Controller
     public function update(ResortRequest $request, $id)
     {
         $resort = Resort::findOrFail($id);
-        $resort->update($request->all());
+        $resort->name =$request->name;
+        $resort->createdBy =$request->createdBy;
+        $resort->description =$request->description;
+        $dist_id=District::where("name","=",$request->district_id)->first()->id;
+        $resort->district_id =$dist_id;
+        if($resort->save()){
 
-        return response(['data' => $resort ], 200);
+            return response(['data' => $resort ], 200);
+        }
+
+        return response(['data' => "something went wrong!" ], 400);
     }
 
     public function destroy($id)
